@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
 
@@ -7,18 +6,11 @@ function Products() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
+  // ✅ Fetch products (only once)
   useEffect(() => {
-  api.get("products/")
-    .then(res => setProducts(res.data))
-    .catch(err => console.log(err));
-}, []);  
-
-  // 🔄 Fetch products
-  useEffect(() => {
-    axios
-      .get("https://suganyamanikandan1.pythonanywhere.com/api/products/")
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.log(err));
+    api.get("/api/products/")
+      .then(res => setProducts(res.data))
+      .catch(err => console.log(err));
   }, []);
 
   // 🛒 Add to cart
@@ -32,13 +24,13 @@ function Products() {
     }
 
     try {
-      await axios.post("https://suganyamanikandan1.pythonanywhere.com/api/products/", {
+      await api.post("/api/cart/", {
         user_id: parseInt(user_id),
         product_id: id,
       });
 
       alert("Added to cart ✅");
-      navigate("/cart"); // 🔥 go to cart page
+      navigate("/cart");
     } catch (error) {
       console.log(error);
       alert("Error adding to cart ❌");
