@@ -24,7 +24,7 @@ function Products() {
     }
 
     try {
-      await api.post("/api/cart/", {
+      await api.post("/api/add-to-cart/", {
         user_id: parseInt(user_id),
         product_id: id,
       });
