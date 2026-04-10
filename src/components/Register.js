@@ -5,7 +5,7 @@ function Register() {
   const [data, setData] = useState({ username: "", password: "" });
 
   const handleRegister = async () => {
-    const res = await axios.post("http://127.0.0.1:8000/api/register/", data);
+    const res = await axios.post("https://suganyamanikandan1.pythonanywhere.com/api/register/", data);
     alert(res.data.message);
   };
 

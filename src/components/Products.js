@@ -32,7 +32,7 @@ function Products() {
     }
 
     try {
-      await axios.post("http://127.0.0.1:8000/api/add-to-cart/", {
+      await axios.post("https://suganyamanikandan1.pythonanywhere.com/api/products/", {
         user_id: parseInt(user_id),
         product_id: id,
       });
