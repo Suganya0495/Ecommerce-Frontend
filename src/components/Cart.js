@@ -15,8 +15,7 @@ function Cart() {
       return;
     }
 
-    axios
-      .get(`http://127.0.0.1:8000/api/cart/${user_id}/`)
+    axios.get(`https://suganyamanikandan1.pythonanywhere.com/api/cart/${user_id}/`)
       .then((res) => setCart(res.data))
       .catch((err) => console.log(err));
   }, [user_id]);
@@ -27,7 +26,7 @@ function Cart() {
   // ❌ Remove item
   const removeItem = async (id) => {
     try {
-      await axios.post("http://127.0.0.1:8000/api/remove-from-cart/", {
+      await await axios.post("https://suganyamanikandan1.pythonanywhere.com/api/remove-from-cart/",  {
         cart_id: id,
       });
 
@@ -49,8 +48,8 @@ function Cart() {
         return;
       }
 
-      const res = await axios.post(
-        "http://127.0.0.1:8000/api/create-order/",
+       const res = await axios.post(
+  "https://suganyamanikandan1.pythonanywhere.com/api/create-order/",
         { amount: total }
       );
 
@@ -65,8 +64,8 @@ function Cart() {
         order_id: order.id,
 
         handler: async function (response) {
-          await axios.post(
-            "http://127.0.0.1:8000/api/save-order/",
+          await await axios.post(
+  "https://suganyamanikandan1.pythonanywhere.com/api/save-order/",
             {
               user_id: user_id,
               amount: total,
